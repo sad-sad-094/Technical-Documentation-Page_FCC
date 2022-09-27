@@ -1,0 +1,609 @@
+<!-- Author: Sebastian Aguirre Duque
+E-mail: sadw621@gmail.com -->
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCC Technical Documentation Page</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body id="main-doc">
+    <nav id="navbar">
+        <ul class="nav-ul">
+            <h2 style='text-align:center';>Python Documentation</h2>
+            <li><a class="active nav-link" href="#header">About Python's Documentation</a></li>
+            <li><a class="nav-link" href="#introduction">Introduction</a></li>
+            <li><a class="nav-link" href="#style-guide">1. Style Guide</a><li>
+            <li><a class="nav-link" href="#use-whitespace">1.1. Use of Whitespace</a></li>
+            <li><a class="nav-link" href="#footnotes">1.2. Footnotes</a></li>
+            <li><a class="nav-link" href="#capitalization">1.3. Capitalization</a></li>
+            <li><a class="nav-link" href="#affirmative-tone">1.4. Affirmative Tone</a></li>
+            <li><a class="nav-link" href="#economy-expression">1.5. Economy of Expression</a></li>
+            <li><a class="nav-link" href="#security-considerations">1.6. Security Considerations (and Other Considerations)</a></li>
+            <li><a class="nav-link" href="#code-examples">1.7. Code Examples</a></li>
+            <li><a class="nav-link" href="#code-equivalents">1.8. Code Equivalents</a></li>
+            <li><a class="nav-link" href="#audience">1.9. Audience</a></li>
+            <li><a class="nav-link" href="#restructuredtext">2. reStructuredText Primer</a></li>
+            <li><a class="nav-link" href="#paragraphs">2.1. Paragraphs</a></li>
+            <li><a class="nav-link" href="#inline-markup">2.2. Inline Markup</a></li>
+            <li><a class="nav-link" href="#lists-quotes">2.3. Lists and Quotes</a></li>
+            <li><a class="nav-link" href="#source-code">2.4. Source Code</a></li>
+            <li><a class="nav-link" href="#hiperlinks">2.5. Hyperlinks</a></li>
+            <li><a class="nav-link" href="#external-links">2.5.1. External Links</a></li>
+            <li><a class="nav-link" href="#internal-links">2.5.2. Internal Links</a></li>
+            <li><a class="nav-link" href="#sections">2.6. Sections</a></li>
+            <li><a class="nav-link" href="#explicit-markup">2.7. Explicit Markup</a></li>
+            <li><a class="nav-link" href="#directives">2.8. Directives</a></li>
+            <li><a class="nav-link" href="#footnotes">2.9. Footnotes</a></li>
+            <li><a class="nav-link" href="#comments">2.10. Comments</a></li>
+            <li><a class="nav-link" href="#source-enconding">2.11. Source Enconding</a></li>
+            <li><a class="nav-link" href="#gotchas">2.12. Gotchas</a></li>
+            <li><a class="nav-link" href="#reference">3. Reference</a></li>
+        </ul>
+    </nav>
+    <div style="margin-left:25%;margin-bottom:30px;padding:1px 20px;">
+        <section id="header" class="main-section">
+            <head>
+                <h1>Python Documentation</h1>
+                <p>
+                    The Python language has a substantial body of documentation, much of it 
+                    contributed by various authors. The markup used for the Python documentation 
+                    is <a href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>, 
+                    developed by the <a href="https://docutils.sourceforge.io">docutils</a> 
+                    project, amended by custom directives and using a toolset named 
+                    <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> to post-process 
+                    the HTML output.
+                </p>
+                <p>
+                    This document describes the style guide for our documentation as well as the 
+                    custom reStructuredText markup introduced by Sphinx to support Python 
+                    documentation and how it should be used.
+                </p>
+                <p>
+                    The documentation in HTML, PDF or EPUB format is generated from text files 
+                    written using the 
+                    <a href="https://docs.python.org/3/library/markup.html#markup">reStructuredText format</a> 
+                    and contained in the 
+                    <a href="https://devguide.python.org/setup/#setup">CPython Git repository</a>.
+                </p>
+                <p class="note-sections">
+                    <strong>Note:</strong> If you’re interested in contributing to Python’s 
+                    documentation, there’s no need to write reStructuredText if you’re not 
+                    so inclined; plain text contributions are more than welcome as well. Send 
+                    an e-mail to docs@python.org or open an issue 
+                    on the <a href="https://docs.python.org/3/bugs.html#reporting-bugs">tracker</a>.
+                </p>
+            </head>
+        </section>
+        <section id="introduction" class="main-section">
+            <h2>Introduction</h2>
+            <p>
+                Python’s documentation has long been considered to be good for a free programming 
+                language. There are a number of reasons for this, the most important being the 
+                early commitment of Python’s creator, Guido van Rossum, to providing documentation 
+                on the language and its libraries, and the continuing involvement of the user community 
+                in providing assistance for creating and maintaining documentation.
+            </p>
+            <p>
+                The involvement of the community takes many forms, from authoring to bug reports 
+                to just plain complaining when the documentation could be more complete or easier to use.
+            </p>
+            <p>
+                This document is aimed at authors and potential authors of documentation for 
+                Python. More specifically, it is for people contributing to the standard documentation 
+                and developing additional documents using the same tools as the standard documents. 
+                This guide will be less useful for authors using the Python documentation tools for 
+                topics other than Python, and less useful still for authors not using the tools at all.
+            </p>
+            <p>
+                If your interest is in contributing to the Python documentation, but you don’t 
+                have the time or inclination to learn reStructuredText and the markup structures 
+                documented here, there’s a welcoming place for you among the Python contributors as well. 
+                Any time you feel that you can clarify existing documentation or provide documentation 
+                that’s missing, the existing documentation team will gladly work with you to integrate 
+                your text, dealing with the markup for you. Please don’t let the material in this document 
+                stand between the documentation and your desire to help out!
+            </p>
+        </section>
+        <section id="style-guide" class="main-section">
+            <h2>1. Style Guide</h2>
+            <section id="use-whitespace">
+                <h3>1.1. Use of Whitespace</h3>
+                <p>
+                    All reST files use an indentation of 3 spaces; no tabs are allowed. The 
+                    maximum line length is 80 characters for normal text, but tables, deeply 
+                    indented code samples and long links may extend beyond that. Code example 
+                    bodies should use normal Python 4-space indentation.
+                </p>
+                <p>
+                    Make generous use of blank lines where applicable; they help group things together.
+                </p>
+                <p>
+                    A sentence-ending period may be followed by one or two spaces; while reST 
+                    ignores the second space, it is customarily put in by some users, for 
+                    example to aid Emacs’ auto-fill mode.
+                </p>
+            </section>
+            <section id="footnotes" class="main-section">
+                <h3>1.2. Footnotes</h3>
+                <p>
+                    Footnotes are generally discouraged, though they may be used when they 
+                    are the best way to present specific information. When a footnote reference 
+                    is added at the end of the sentence, it should follow the sentence-ending 
+                    punctuation. The reST markup should appear something like this:
+                </p>
+                <p>
+                    This sentence has a footnote reference. [#]_ This is the next sentence.
+                </p>
+                <p>
+                    Footnotes should be gathered at the end of a file, or if the file is very 
+                    long, at the end of a section. The docutils will automatically create 
+                    backlinks to the footnote reference.
+                </p>
+                <p>
+                    Footnotes may appear in the middle of sentences where appropriate.
+                </p>
+            </section>
+            <section id="capitalization" class="main-section">
+                <h3>1.3. Capitalization</h3>
+                <div class="flex-comment">
+                    <p>
+                        In the Python documentation, the use of sentence case in section 
+                        titles is preferable, but consistency within a unit is more important 
+                        than following this rule. If you add a section to a chapter where most 
+                        sections are in title case, you can either convert all titles to sentence 
+                        case or use the dominant style in the new section title.
+                    </p>
+                    <p class="example-section">
+                        <strong>Sentence case:</strong> Sentence case is a set of capitalization 
+                        rules used in English sentences: the first word is always capitalized 
+                        and other words are only capitalized if there is a specific rule requiring it.
+                    </p>
+                </div>
+                <p>
+                    Sentences that start with a word for which specific rules require starting 
+                    it with a lower case letter should be avoided.
+                </p>
+                <p class="note-sections">
+                    <strong>Note:</strong> Sections that describe a library module often have 
+                    titles in the form of “modulename — Short description of the module”. 
+                    In this case, the description should be capitalized as a stand-alone sentence.
+                </p>
+                <p>
+                    Many special names are used in the Python documentation, including the names 
+                    of operating systems, programming languages, standards bodies, and the like. 
+                    Most of these entities are not assigned any special markup, but the preferred 
+                    spellings are given here to aid authors in maintaining the consistency of 
+                    presentation in the Python documentation.
+                </p>
+            </section>
+            <section id="affirmative-tone" class="main-section">
+                <h3>1.4. Affirmative Tone</h3>
+                <p>
+                    The documentation focuses on affirmatively stating what the language does and 
+                    how to use it effectively.
+                </p>
+                <p>
+                    Except for certain security or segfault risks, the docs should avoid wording 
+                    along the lines of “feature x is dangerous” or “experts only”. These kinds 
+                    of value judgments belong in external blogs and wikis, not in the core documentation.
+                </p>
+                <p>
+                    Bad example (creating worry in the mind of a reader):
+                </p>
+                <p class="tab-text">
+                    Warning: failing to explicitly close a file could result in lost data 
+                    or excessive resource consumption. Never rely on reference counting to 
+                    automatically close a file.
+                </p>
+                <p>
+                    Good example (establishing confident knowledge in the effective use of the language):
+                </p>
+                <p class="tab-text">
+                    A best practice for using files is use a try/finally pair to explicitly 
+                    close a file after it is used. Alternatively, using a with-statement can achieve 
+                    the same effect. This assures that files are flushed and file descriptor 
+                    resources are released in a timely manner.
+                </p>
+            </section>
+            <section id="economy-expression" class="main-section">
+                <h3>1.5. Economy of Expression</h3>
+                <p>
+                    More documentation is not necessarily better documentation. Err on the side of 
+                    being succinct.
+                </p>
+                <p>
+                    It is an unfortunate fact that making documentation longer can be an impediment 
+                    to understanding and can result in even more ways to misread or misinterpret 
+                    the text. Long descriptions full of corner cases and caveats can create the 
+                    impression that a function is more complex or harder to use than it actually is.
+                </p>
+            </section>
+            <section id="security-considerations" class="main-section">
+                <h3>1.6. Security Considerations (and Other Concerns)</h3>
+                <p>
+                    Some modules provided with Python are inherently exposed to security 
+                    issues (e.g. shell injection vulnerabilities) due to the purpose of the 
+                    module (e.g. <a href="https://docs.python.org/3/library/ssl.html#module-ssl">ssl</a>). 
+                    Littering the documentation of these modules with red warning boxes for 
+                    problems that are due to the task at hand, rather than specifically to Python’s 
+                    support for that task, doesn’t make for a good reading experience.
+                </p>
+                <p>
+                    Instead, these security concerns should be gathered into a dedicated 
+                    “Security Considerations” section within the module’s documentation, 
+                    and cross-referenced from the documentation of affected interfaces with a 
+                    note similar to 
+                    "Please refer to the :ref:`security-considerations` section 
+                    for important information on how to avoid common mistakes.".
+                </p>
+                <p>
+                    Similarly, if there is a common error that affects many interfaces 
+                    in a module (e.g. OS level pipe buffers filling up and stalling child processes), 
+                    these can be documented in a “Common Errors” section and cross-referenced 
+                    rather than repeated for every affected interface.
+                </p>
+            </section>
+            <secttion id="code-examples" class="main-section">
+                <h3>1.7. Code Examples</h3>
+                <p>
+                    Short code examples can be a useful adjunct to understanding. Readers 
+                    can often grasp a simple example more quickly than they can digest a 
+                    formal description in prose.
+                </p>
+                <p>
+                    People learn faster with concrete, motivating examples that match the 
+                    context of a typical use case. For instance, the 
+                    <a href="https://docs.python.org/3/library/stdtypes.html#str.rpartition">str.rpartition()</a> 
+                    method is better demonstrated with an example splitting the domain from 
+                    a URL than it would be with an example of removing the last word from a line 
+                    of Monty Python dialog.
+                </p>
+                <p>
+                    The ellipsis for the <a href="https://docs.python.org/3/library/sys.html#sys.ps2">sys.ps2</a> 
+                    secondary interpreter prompt should only be used sparingly, where it is 
+                    necessary to clearly differentiate between input lines and output lines. 
+                    Besides contributing visual clutter, it makes it difficult for readers to 
+                    cut-and-paste examples so they can experiment with variations.
+                </p>
+            </secttion>
+            <section id="code-equivalents" class="main-section">
+                <h3>1.8. Code Equivalents</h3>
+                <p>
+                    Giving pure Python code equivalents (or approximate equivalents) can be a 
+                    useful adjunct to a prose description. A documenter should carefully weigh 
+                    whether the code equivalent adds value.
+                </p>
+                <p>
+                    A good example is the code equivalent for 
+                    <a href="https://docs.python.org/3/library/functions.html#all">all()</a>. 
+                    The short 4-line code equivalent is easily digested; it re-emphasizes the 
+                    early-out behavior; and it clarifies the handling of the corner-case where 
+                    the iterable is empty. In addition, it serves as a model for people wanting 
+                    to implement a commonly requested alternative where all() would return the 
+                    specific object evaluating to False whenever the function terminates early.
+                </p>
+                <p>
+                    A more questionable example is the code for 
+                    <a href="https://docs.python.org/3/library/itertools.html#itertools.groupby">itertools.groupby()</a>. 
+                    Its code equivalent borders on being too complex to be a quick aid to 
+                    understanding. Despite its complexity, the code equivalent was kept because 
+                    it serves as a model to alternative implementations and because the operation 
+                    of the “grouper” is more easily shown in code than in English prose.
+                </p>
+                <p>
+                    An example of when not to use a code equivalent is for the 
+                    <a href="https://docs.python.org/3/library/functions.html#oct">oct()</a> 
+                    function. The exact steps in converting a number to octal doesn’t add value 
+                    for a user trying to learn what the function does.
+                </p>
+            </section>
+            <section id="audience" class="main-section">
+                <h3>1.9. Audience</h3>
+                <p>
+                    The tone of the tutorial (and all the docs) needs to be respectful of 
+                    the reader’s intelligence. Don’t presume that the readers are stupid. 
+                    Lay out the relevant information, show motivating use cases, provide 
+                    glossary links, and do your best to connect-the-dots, but don’t talk 
+                    down to them or waste their time.
+                </p>
+                <p>
+                    The tutorial is meant for newcomers, many of whom will be using the 
+                    tutorial to evaluate the language as a whole. The experience needs to 
+                    be positive and not leave the reader with worries that something bad will 
+                    happen if they make a misstep. The tutorial serves as guide for intelligent 
+                    and curious readers, saving details for the how-to guides and other sources.
+                </p>
+                <p>
+                    Be careful accepting requests for documentation changes from the rare 
+                    but vocal category of reader who is looking for vindication for one of 
+                    their programming errors (“I made a mistake, therefore the docs must be 
+                    wrong …”). Typically, the documentation wasn’t consulted until after the 
+                    error was made. It is unfortunate, but typically no documentation edit would 
+                    have saved the user from making false assumptions about the language 
+                    (“I was surprised by …”).
+                </p>
+            </section>
+        </section>
+        <section id="restructuredtext" class="main-section">
+            <h2>2. reStructuredText Primer</h2>
+            <p>
+                This section is a brief introduction to reStructuredText (reST) concepts and syntax,
+                intended to provide authors with enough information to author documents productively. 
+                Since reST was designed to be a simple, unobtrusive markup language, this will 
+                not take too long.
+            </p>
+            <p class="note-sections">
+                <strong>See also:</strong> The authoritative 
+                <a href="https://docutils.sourceforge.io/rst.html">reStructuredText User Documentation</a>.
+            </p>
+            <section id="paragraphs" class="main-section">
+                <h3>2.1. Paragraphs</h3>
+                <p>
+                    The paragraph is the most basic block in a reST document. Paragraphs are simply 
+                    chunks of text separated by one or more blank lines. As in Python, indentation 
+                    is significant in reST, so all lines of the same paragraph must be left-aligned 
+                    to the same level of indentation.
+                </p>
+            </section>
+            <section id="inline-markup" class="main-section">
+                <h3>2.2. Inline Markup</h3>
+                <p>
+                    The standard reST inline markup is quite simple: use
+                </p>
+                <ul>
+                    <li>one asterisk: *text* for emphasis (italics),</li>
+                    <li>two asterisks: **text** for strong emphasis (boldface), and</li>
+                    <li>backquotes: ``text`` for code samples.</li>
+                </ul>
+                <p>
+                    If asterisks or backquotes appear in running text and could be confused 
+                    with inline markup delimiters, they have to be escaped with a backslash.
+                </p>
+                <p>
+                    Be aware of some restrictions of this markup:
+                </p>
+                <ul>
+                    <li>it may not be nested,</li>
+                    <li>content may not start or end with whitespace: * text* is wrong,</li>
+                    <li>
+                        it must be separated from surrounding text by non-word characters. 
+                        Use a backslash escaped space to work around that: thisis\ *one*\ word.
+                    </li>
+                </ul>
+                <p>
+                    These restrictions may be lifted in future versions of the docutils.
+                </p>
+                <p>
+                    reST also allows for custom “interpreted text roles”’, which signify that 
+                    the enclosed text should be interpreted in a specific way. Sphinx uses 
+                    this to provide semantic markup and cross-referencing of identifiers, as 
+                    described in the appropriate section. The general syntax is :rolename:`content`.
+                </p>
+            </section>
+            <section id="lists-quotes" class="main-section">
+                <h3>2.3. Lists and Quotes</h3>
+                <p>
+                    List markup is natural: just place an asterisk at the start of a paragraph 
+                    and indent properly. The same goes for numbered lists; they can also be 
+                    automatically numbered using a # sign:
+                </p>
+                <p class="tab-text example-section">
+                    * This is a bulleted list. <br>
+                    * It has two items, the second item uses two lines. <br>
+                    <br>
+                    1. This is a numbered list. <br>
+                    2. It has two items too. <br>
+                    <br>
+                    #. This is a numbered list. <br>
+                    #. It has two items too.
+                </p>
+                <p>
+                    Nested lists are possible, but be aware that they must be separated from 
+                    the parent list items by blank lines:
+                </p>
+                <p class="tab-text example-section">
+                    * this is <br>
+                    * a list <br>
+                    <br>
+                    * with a nested list <br> 
+                    * and some subitems <br>
+                    <br>
+                    * and here the parent list continues
+                </p>
+                <p>
+                    Definition lists are created as follows:
+                </p>
+                <p class="tab-text example-section">
+                    term (up to a line of text) <br>
+                    &emsp; Definition of the term, which must be indented <br>
+                    <br>
+                    &emsp; and can even consist of multiple paragraphs <br>
+                    <br>
+                    next term <br>
+                    &emsp; Description.
+                </p>
+                <p>
+                    Paragraphs are quoted by just indenting them more than the 
+                    surrounding paragraphs.
+                </p>
+            </section>
+            <section id="source-code" class="main-section">
+                <h3>2.4. Source Code</h3>
+                <p>
+                    Literal code blocks are introduced by ending a paragraph with the special 
+                    marker ::. The literal block must be indented:
+                </p>
+                <p class="tab-text example-section">
+                    This is a normal text paragraph. The next paragraph is a code sample:: <br>
+                    <br>
+                    &emsp; It is not processed in any way, except <br>
+                    &emsp; that the indentation is removed. <br>
+                    <br>
+                    &emsp; It can span multiple lines. <br>
+                    <br>
+                    This is a normal text paragraph again.
+                </p>
+                <p>
+                    The handling of the :: marker is smart:
+                </p>
+                <ul>
+                    <li>
+                        If it occurs as a paragraph of its own, that paragraph is completely left 
+                        out of the document.
+                    </li>
+                    <li>If it is preceded by whitespace, the marker is removed.</li>
+                    <li>If it is preceded by non-whitespace, the marker is replaced by a single colon.</li>
+                </ul>
+                <p>
+                    That way, the second sentence in the above example’s first paragraph would be 
+                    rendered as “The next paragraph is a code sample:”.
+                </p>
+            </section>
+        </section>
+        <section id="hiperlinks" class="main-section">
+            <h2>2.5. Hyperlinks</h2>
+            <section id="external-links">
+                <h3>2.5.1. External Links</h3>
+                <p>
+                    Use `Link text <http://target>`_ for inline web links. If the link text 
+                    should be the web address, you don’t need special markup at all, the parser 
+                    finds links and mail addresses in ordinary text.
+                </p>
+            </section>
+            <section id="internal-links" class="main-section">
+                <h3>2.5.2. Internal Links</h3>
+                <p>
+                    Internal linking is done via a special reST role, see the section on specific markup,
+                    <a href="https://devguide.python.org/documenting/#doc-ref-role">Cross-linking markup</a>.
+                </p>
+            </section>
+        </section>
+        <section id="sections" class="main-section">
+            <h2>2.6. Sections</h2>
+            <p>
+                Section headers are created by underlining (and optionally overlining) the section 
+                title with a punctuation character, at least as long as the text:
+            </p>
+            <p class="tab-text example-section">
+                ================= <br>
+                This is a heading <br>
+                ================= <br>
+            </p>
+            <p>
+                Normally, there are no heading levels assigned to certain characters as the 
+                structure is determined from the succession of headings. However, for the 
+                Python documentation, here is a suggested convention:
+            </p>
+            <ul>
+                <li># with overline, for parts</li>
+                <li>* with overline, for chapters</li>
+                <li>=, for sections</li>
+                <li>-, for subsections</li>
+                <li>^, for subsubsections</li>
+                <li>", for paragraphs</li>
+            </ul>
+        </section>
+        <section id="explicit-markup" class="main-section">
+            <h2>2.7. Explicit Markup</h2>
+            <p>
+                “Explicit markup” is used in reST for most constructs that need special handling, 
+                such as footnotes, specially-highlighted paragraphs, comments, and 
+                generic directives.
+            </p>
+            <p>
+                An explicit markup block begins with a line starting with .. followed by 
+                whitespace and is terminated by the next paragraph at the same level of 
+                indentation. (There needs to be a blank line between explicit markup and normal 
+                paragraphs. This may all sound a bit complicated, but it is intuitive enough when 
+                you write it.)
+            </p>
+        </section>
+        <section id="directives" class="main-section">
+            <h2>2.8. Directives</h2>
+            <p>
+                A directive is a generic block of explicit markup. Besides roles, it is 
+                one of the extension mechanisms of reST, and Sphinx makes heavy use of it.
+            </p>
+            <p>
+                Basically, a directive consists of a name, arguments, options and content. 
+                (Keep this terminology in mind, it is used in the next chapter describing 
+                custom directives.) Looking at this example,
+            </p>
+            <p class="tab-text example-section">
+                .. function:: foo(x) <br>
+                &emsp; &emsp; &emsp; &emsp; foo(y, z) <br>
+                :bar: no <br>
+                <br>
+                Return a line of text input from the user.
+            </p>
+            <p>
+                function is the directive name. It is given two arguments here, the 
+                remainder of the first line and the second line, as well as one option 
+                bar (as you can see, options are given in the lines immediately following the 
+                arguments and indicated by the colons).
+            </p>
+            <p>
+                The directive content follows after a blank line and is indented relative 
+                to the directive start.
+            </p>
+        </section>
+        <section id="footnotes" class="main-section">
+            <h2>2.9. Footnotes</h2>
+            <p>
+                For footnotes, use [#]_ to mark the footnote location, and add the footnote body 
+                at the bottom of the document after a “Footnotes” rubric heading, like so:
+            </p>
+            <p class="tab-text example-section">
+                Lorem ipsum [#]_ dolor sit amet ... [#]_ <br>
+                <br>
+                .. rubric:: Footnotes <br>
+                <br>
+                .. [#] Text of the first footnote. <br>
+                .. [#] Text of the second footnote.
+            </p>
+        </section>
+        <sections id="comments" class="main-section">
+            <h2>2.10. Comments</h2>
+            <p>
+                Every explicit markup block which isn’t a valid markup construct 
+                (like the footnotes above) is regarded as a comment.
+            </p>
+        </sections>
+        <section id="source-enconding" class="main-section">
+            <h2>2.11. Source Encoding</h2>
+            <p>
+                Since the easiest way to include special characters like em dashes or 
+                copyright signs in reST is to directly write them as Unicode characters, 
+                one has to specify an encoding:
+            </p>
+            <p>
+                All Python documentation source files must be in UTF-8 encoding, and the HTML 
+                documents written from them will be in that encoding as well.
+            </p>
+        </section>
+        <section id="gotchas" class="main-section">
+            <h2>2.12. Gotchas</h2>
+            <p>
+                There are some problems one commonly runs into while authoring reST documents:
+            </p>
+            <p>
+                <strong>Separation of inline markup:</strong> As said above, inline 
+                markup spans must be separated from the surrounding text by non-word characters, 
+                you have to use an escaped space to get around that.
+            </p>
+        </section>
+        <section id="reference" class="main-section">
+            <h2>3. Reference</h2>
+            <p>
+                All the documentation in this page is taken from 
+                <a href="https://devguide.python.org/documenting/" target="_blank">Python Developer's Guide</a>.
+                Alike, if you need to look for the entire documentation click 
+                <a href="https://devguide.python.org/documenting/" target="_blank">here</a>. 
+            </p>
+        </section>
+    </div>
+</body>

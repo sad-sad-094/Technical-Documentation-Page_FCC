@@ -6,5 +6,5 @@ Technical Documentation Page is a documentation page bluit as a part of a freeCo
 It was built from `HTML5` and `CSS` native.
 
 Deploy URLs: <br>
- <br>
+https://sad-sad-094.github.io/Technical-Documentation-Page_FCC/ <br>
 https://codepen.io/sad-sad-094/full/poeeEzK
